@@ -33,6 +33,8 @@ public class FileCharIterator implements Iterator<String> {
     
 
     @Override
+    //retour le resultat de verification si la lecture de fichier arrive a la fin ou non
+   
     public boolean hasNext() {
         return nextChar != -1;
     }
