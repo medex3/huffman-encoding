@@ -24,14 +24,14 @@ public class HuffmanEncoding {
 			frequency = freq;
 		}
 		
-		// Method that checks if a certain treenode is a leaf aka a simple character. 
+//La méthode qui vérifie si certain treenode est une feuille c'est-à-dire un caractère simple.
 		public boolean isLeaf() {
 			return myLeft == null && myLeft == null;
 		}
 	}
 	
 	
-	// Hashmap object that stores the frequency of each letter character in the file. 
+// Hashmap l'objet qui stocke la fréquence de chaque caractère(personnage) de lettre dans le fichier(dossier).
 	public static HashMap<String, Integer> frequencyCount(Iterator<String> iterator) {
 		HashMap<String, Integer> binaryFrequency = new HashMap<String, Integer>();
 		
@@ -47,8 +47,8 @@ public class HuffmanEncoding {
 	}
 	
 	
-	// A method that shows the frequency of each character. 
-	// Used for testing purposes. 
+// Une méthode qui montre la fréquence de chaque caractère(personnage).
+//Utilisé aux fins de test.
 	public static void showFrequency(HashMap<String, Integer> binaryFrequency) {
 		for (Map.Entry<String, Integer> entry : binaryFrequency.entrySet()) {
 		    String key = entry.getKey();
@@ -60,8 +60,8 @@ public class HuffmanEncoding {
 	}
 	
 	
-	// Methods the looks for the characters with the minimum frequency 
-	// and then removes them from the hashmap to create the huffman tree. 
+// Méthodes les regards(apparences) pour les caractères(personnages) avec la fréquence minimale
+//Et les enlève ensuite du hashmap pour créer l'arbre huffman.
 	public static Map.Entry<String, Integer> delMinFrequency(HashMap<String, Integer> binaryFrequency) {		
 		Integer min = Collections.min(binaryFrequency.values());
 		
@@ -74,8 +74,8 @@ public class HuffmanEncoding {
 		return null;
 	}
 	
-	//Comparator TreeNode class implementation
-    public static Comparator<TreeNode> idComparator = new Comparator<TreeNode>(){
+// Comparateur TreeNode mise en œuvre de classe
+	public static Comparator<TreeNode> idComparator = new Comparator<TreeNode>(){
          
         @Override
         public int compare(TreeNode c1, TreeNode c2) {
@@ -83,29 +83,29 @@ public class HuffmanEncoding {
         }
     };
 	
-	// build the Huffman trie according to the frequencies
+//Construire le Huffman trie selon les fréquences
 	public static HashMap<String, String> buildTrie(HashMap<String, Integer> binaryFrequency) {
 		PriorityQueue<TreeNode> leafNode = new PriorityQueue<TreeNode>(binaryFrequency.size(), idComparator);
 		
-		// create the leafs
+// Crée les feuilles
 		while (binaryFrequency.size() > 0) {
 			Map.Entry<String, Integer> leaf = delMinFrequency(binaryFrequency);
 		    leafNode.add(new TreeNode(null, null, leaf.getKey(), leaf.getValue()));
 		}
 	
-		// merge the leafs
+// Fusionne les feuilles
 		while (leafNode.size() > 1) {	
 			TreeNode left = leafNode.remove();
 			TreeNode right = leafNode.remove();
 			leafNode.add(new TreeNode(left, right, null, left.frequency + right.frequency));
 		}
 		
-		// Construct a table mapping characters
+// Construit une table dressant la carte de caractères(personnages)
 		return codewords(new HashMap<String, String>(), leafNode.peek(), "");
 	}
 	
 	
-	// Method creating a hashmap of encoded codewords relating to each ASCII term. 
+// Méthode créant un hashmap de mots de passe codés touchant à chaque terme d'ASCII.
 	public static HashMap<String, String> codewords(HashMap<String, String> cws, TreeNode x, String s) {
     	if (x.isLeaf())
     		cws.put(x.character, s);
@@ -117,7 +117,7 @@ public class HuffmanEncoding {
     }
     
 	
-	// Method that creates a header at the beginning of the file. 
+// La Méthode qui crée un en-tête(une tête) au début du fichier(dossier).
 	public static String formatHeader(HashMap<String, String> codewords) {
 		String header = "";
 
@@ -126,7 +126,7 @@ public class HuffmanEncoding {
 		return header + "\n";
 	}
 	
-	// Method that converts the encoded binary strings into a format of 8 bits each. 
+//La méthode qui convertit les cordes binaires codées dans un format de 8 morceaux chacun.
 	public static String convertTo8bits(String binary) {
 		String zeros = "";
 		
@@ -136,8 +136,8 @@ public class HuffmanEncoding {
 	}
 	
 	
-	// Method that displays the header in file format. 
-    public static void writeHeader(String header, String outputFileName) {
+// La Méthode qui montre(affiche) l'en-tête(la tête) dans le format de fichier(dossier).
+	public static void writeHeader(String header, String outputFileName) {
     	for (int i = 0; i < header.length(); i++) {
     		String section = convertTo8bits(Integer.toBinaryString(header.charAt(i)));
     		FileOutputHelper.writeBinStrToFile(section, outputFileName);
@@ -145,8 +145,8 @@ public class HuffmanEncoding {
     }
     
     
-    // Encoding each individual character. 
-    public static StringBuilder  encodeCharacters(HashMap<String, String> codes, Iterator<String> iterator) {
+// Codage chaque caractère(personnage) individuel.
+	public static StringBuilder  encodeCharacters(HashMap<String, String> codes, Iterator<String> iterator) {
     	StringBuilder binChar = new StringBuilder("");
   
     	while (iterator.hasNext())
@@ -154,10 +154,10 @@ public class HuffmanEncoding {
     	return binChar.append(codes.get("EOF"));
     }
     
-    // Method that creates the body of the encoded file. 
-    public static void writeBody(StringBuilder binChar, String outputFileName) {
-    	// write the bytes to the file 
-    	while (binChar.length() > 8) {
+// La méthode qui crée le corps(l'organisme) du fichier(dossier) codé.
+	public static void writeBody(StringBuilder binChar, String outputFileName) {
+//Écrire les octets au fichier
+		while (binChar.length() > 8) {
     		int readMax = 8 * (binChar.length() / 8);
     		FileOutputHelper.writeBinStrToFile(binChar.substring(0, readMax), outputFileName);
     		binChar.delete(0, readMax);
@@ -171,8 +171,8 @@ public class HuffmanEncoding {
     }
     
     
-    // Method that loads the encoded file. 
-    public static Queue<String> loadFile(Iterator<String> it) {
+// La méthode qui charge le fichier(dossier) codé.
+	public static Queue<String> loadFile(Iterator<String> it) {
     	Queue<String> bin = new LinkedList<String>();
     	
     	while (it.hasNext())
@@ -180,8 +180,7 @@ public class HuffmanEncoding {
     	return bin;
     }
     
-    // tries to delete a non-existing file
-    public static void deleteIfExists(String path) {
+	public static void deleteIfExists(String path) {
 	   File f = new File(path);
 	   
 	   try {
@@ -192,27 +191,27 @@ public class HuffmanEncoding {
 		}
     }
 
-    // Overall encoding method. 
+// Méthode de codage globale.
 	public static void encode(String target, String destination, int n) {
-		// Load the file
+//Charger le fichier
 		Queue<String> file = loadFile(n > 0 ? new FileFreqWordsIterator(target, n) : new FileCharIterator(target));
 
-		// Counts the frequency of each character
+// Compte la fréquence de chaque caractère(personnage)
 		HashMap<String, Integer> binaryFrequency = frequencyCount(file.iterator());
 
-		// End of the file code
+// Fin du code de fichier(dossier)
 		binaryFrequency.put("EOF", 1);
 
-		// build the Huffman tree
+//Construire l'arbre de Huffman
 		HashMap<String, String> codes = buildTrie(binaryFrequency);
 
-		// get the encode header
+// Obtient l'en-tête(la tête) se codant
 		String header = formatHeader(codes);
 		
-		// encode all the characters according to the codewords 
+// Code tous les caractères(personnages) selon les mots de passe
 		StringBuilder binChar = encodeCharacters(codes, file.iterator());
 
-		// write encoded character
+//Écrire le caractère codé
 		deleteIfExists(destination);
 		writeHeader(header, destination);
 		writeBody(binChar, destination);
@@ -226,7 +225,7 @@ public class HuffmanEncoding {
 //	   -										-	
 //	   ------------------------------------------
 	
-	// Method retrieving codewords in the encoded file. 
+//Méthode recouvrant mots de passe dans le fichier codé.
 	public static HashMap<String, String> retrieveCodewords(String header) {
 		String[] lines = header.split("\n");
 		HashMap<String, String> codewords = new HashMap<String, String>();
@@ -241,7 +240,7 @@ public class HuffmanEncoding {
 	}
 	
 	
-	// Method that return the encoded header from a file
+//La méthode qui rend l'en-tête codé d'un fichier
 	public static String retrieveEncodedHeader(FileCharIterator it) {
 		String endOfHeader = convertTo8bits(Integer.toBinaryString('\n'));
 		StringBuilder header = new StringBuilder("");
@@ -264,7 +263,7 @@ public class HuffmanEncoding {
 			}
 		}
 
-		// check if the header is well formated
+//Vérifier si l'en-tête est bien formaté
 		if (error == true) {
 			System.err.println("Error: bad header format");
 			System.exit(0);
@@ -272,7 +271,7 @@ public class HuffmanEncoding {
 		return header.toString();
 	}
 	
-	// Method that return the encoded body from a file
+//La méthode qui rend le corps codé d'un fichier
 	public static String retrieveEncodedBody(FileCharIterator it) {
 		StringBuilder section = new StringBuilder("");
 
@@ -281,12 +280,12 @@ public class HuffmanEncoding {
 		return section.toString();
 	}
 	
-	// Method that search in the codewords hashmap the new compresed binary
+//La méthode qui fouille dans les mots de passe hashmap dans le nouveau fichier binaire compresed
 	public static String searchForCode(String code, HashMap<String, String> codewords) {
 		return codewords.containsKey(code) ? codewords.get(code) : null;
 	}
 	
-	// Method that write the decoded file
+// La Méthode qui écrit le fichier(dossier) de decoded
 	public static void writeDecodedFile(StringBuilder section, String destination) {
 		while (section.length() > 8) {
     		int readMax = 8 * (section.length() / 8);
@@ -301,7 +300,7 @@ public class HuffmanEncoding {
     	}
 	}
 	
-	// Decode main method
+// Décode la méthode principale
 	public static void decode(String target, String destination) {
 		FileCharIterator it = new FileCharIterator(target);
 		String header = retrieveEncodedHeader(it);
@@ -325,7 +324,7 @@ public class HuffmanEncoding {
 			i++;
 		}
 
-		// write file
+//Écrire le fichier
 		deleteIfExists(destination);
 		writeDecodedFile(section, destination);	
 	}
