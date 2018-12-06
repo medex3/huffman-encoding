@@ -12,7 +12,7 @@ public class FileFreqWordsIteratorTest extends TestCase {
 			FileOutputHelper.writeBinStrToFile(bin, destination);
 		}
 	}
-	
+			/*this is a comment */
 	public boolean checkOutput(String[] output, FileFreqWordsIterator it) {
 		for (int i = 0; i < output.length; i++) {
 			
