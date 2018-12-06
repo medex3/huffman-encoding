@@ -5,10 +5,9 @@ import junit.framework.TestCase;
 
 public class ZipperTest extends TestCase {
 
-	// test a file
-	// test empty folder
-	// test folder with folders inside
-
+// Teste un fichier(dossier)
+// Teste le dossier vide
+//Dossier de test avec dossiers à l'intérieur
 	public boolean isSameFile(FileCharIterator it, FileCharIterator it2) {
 		while (it.hasNext() && it2.hasNext()) {
 			String char1 = it.next();
@@ -60,7 +59,7 @@ public class ZipperTest extends TestCase {
 		Zipper.encodeZip(f.getName(), "emptyFolder.txt.zip");
 		Zipper.decodeZip("emptyFolder.txt.zip", "emptyFolder-copy");
 
-		// check if these two files are the same
+// Vérifie si ces deux fichiers(dossiers) sont les mêmes
 		File emptyFolder = new File("emptyFolder-copy");
 
 		assertEquals(true, emptyFolder.exists());
@@ -91,24 +90,23 @@ public class ZipperTest extends TestCase {
 	}
 
 	public void testFolderWithFiles() {
-		/* Folders */
+/* Dossiers */
 		File main = createFolder("folderWithFiles");
 		File folder1 = createFolder("folderWithFiles/folder1");
 		File folder2 = createFolder("folderWithFiles/folder2");
 
-		/* Files */
+/* Dépose(Classe) */
 		File file1 = createFile("folderWithFiles/folder1/file1.txt", "");
 		File file2 = createFile("folderWithFiles/folder1/file2.txt", "blabla");
 		File file3 = createFile("folderWithFiles/folder2/file3.txt",
 				"Hello my name is Mourad");
 
-		/* encode */
+/* Coder */
 		Zipper.encodeZip(main.getName(), "folderWithFiles.txt.zip");
-		/* decode */
+/* décode */
 		Zipper.decodeZip("folderWithFiles.txt.zip", "folderWithFiles-copy");
 
-		/* check that the folders exist */
-
+/* le contrôle(chèque) que les dossiers existent */
 		File copyMain = createFolder("folderWithFiles-copy");
 		File copyFolder1 = createFolder("folderWithFiles-copy/folder1");
 		File copyFolder2 = createFolder("folderWithFiles-copy/folder2");
@@ -117,8 +115,7 @@ public class ZipperTest extends TestCase {
 		assertEquals(true, copyFolder1.exists());
 		assertEquals(true, copyFolder2.exists());
 
-		/* check that the files exist */
-
+/* Vérifier que les fichiers existent */
 		File copyFile1 = createFolder("folderWithFiles-copy/folder1/file1.txt");
 		File copyFile2 = createFolder("folderWithFiles-copy/folder1/file2.txt");
 		File copyFile3 = createFolder("folderWithFiles-copy/folder2/file3.txt");
@@ -127,7 +124,7 @@ public class ZipperTest extends TestCase {
 		assertEquals(true, copyFile2.exists());
 		assertEquals(true, copyFile3.exists());
 
-		/* check the files exist */
+/* Vérifier les fichiers existent */
 		assertEquals(
 				true,
 				isSameFile(new FileCharIterator(file1.getAbsolutePath()),
@@ -141,7 +138,7 @@ public class ZipperTest extends TestCase {
 				isSameFile(new FileCharIterator(file2.getAbsolutePath()),
 						new FileCharIterator(copyFile2.getAbsolutePath())));
 
-		/* now delete them all */
+/* Supprimez-les maintenant tout le */
 		main.delete();
 		folder1.delete();
 		folder2.delete();
