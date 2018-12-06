@@ -16,8 +16,8 @@ public class FileFreqWordsIterator implements Iterator<String> {
 		bin = parseWords();
 	}
 
-	// Looking for words that have the most frequency 
-	// and removing them from the hashmap for easier compression. 
+// La Recherche des mots qui ont la plupart de fréquence	
+// Et enlèvement d'eux du hashmap pour compression plus facile.
 	public static Map.Entry<String, Integer> delMaxFrequency(HashMap<String, Integer> words) {		
 		Integer max = Collections.max(words.values());
 		
@@ -30,7 +30,7 @@ public class FileFreqWordsIterator implements Iterator<String> {
 		return null;
 	}
 	
-	// Looking for the most Frequent words in the file. 
+//Chercher les mots les Plus fréquents dans le fichier.
 	private HashMap<String, Integer> mostFrequentWords(HashMap<String, Integer> words) {
 		HashMap<String, Integer> frequentWords = new HashMap<String, Integer>();
 		
