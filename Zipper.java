@@ -85,25 +85,25 @@ public class Zipper {
 	}
 
 	public static FileContainer encodeSingleFile(String path, int position) {
-		// Load the file
+//Charger le fichier
 		Queue<String> file = HuffmanEncoding
 				.loadFile(new FileCharIterator(path));
 
-		// Counts the frequency of each character
+// Compte la fréquence de chaque caractère(personnage)
 		HashMap<String, Integer> binaryFrequency = HuffmanEncoding
 				.frequencyCount(file.iterator());
 
-		// End of the file code
+//Fin du code de fichier
 		binaryFrequency.put("EOF", 1);
 
-		// build the Huffman tree
+// Construit l'arbre Huffman
 		HashMap<String, String> codes = HuffmanEncoding
 				.buildTrie(binaryFrequency);
 
-		// get the encode header
+// Obtient l'en-tête(la tête) se codant
 		String header = HuffmanEncoding.formatHeader(codes);
 
-		// encode all the characters according to the codewords
+// Code tous les caractères(personnages) selon les mots de passe
 		StringBuilder body = HuffmanEncoding.encodeCharacters(codes,
 				file.iterator());
 
@@ -125,16 +125,16 @@ public class Zipper {
 			Integer value = entry.getValue();
 
 			if (value != -1) {
-				// Will generate the file's header
+//Produira l'en-tête du fichier
 				FileContainer ctn = encodeSingleFile(key, startPosition);
 
-				// start position of the compressed file
+// Commence la position(le poste) du fichier(dossier) compressé
 				if (ctn != null && files.containsKey(key)) {
 					files.put(key, startPosition);
 					startPosition += 1 + ctn.getHeader().length()
 							+ makeItMultipleOf(ctn.getBody().length(), 8);
 				}
-				// save the header and the iterator for later use
+// Sauve(économise) l'en-tête(la tête) et l'itérateur pour l'utilisation postérieure
 				fctn.add(ctn);
 			}
 		}
@@ -163,14 +163,14 @@ public class Zipper {
 			HuffmanEncoding.writeHeader(ctn.getHeader(), destination);
 			HuffmanEncoding.writeBody(ctn.getBody(), destination);
 
-			// Add carriage return to separate each file
+// Ajoute le retour chariot pour séparer chaque fichier(dossier)
 			if (it.hasNext())
 				FileOutputHelper.writeBinStrToFile("00001010", destination);
 		}
 	}
 
 	public static void encodeZip(String target, String destination) {
-		// List files, folders
+// La Liste dépose(classe), des dossiers
 		HashMap<String, Integer> files = listFiles(target,
 				new HashMap<String, Integer>());
 		Queue<FileContainer> fctn = readFiles(files);
@@ -212,7 +212,7 @@ public class Zipper {
 		int i = 0;
 
 		header = HuffmanEncoding.retrieveEncodedHeader(it);
-		// Add the bytes wrote for the header
+//Ajouter que les octets ont écrit pour l'en-tête
 		limit += header.length();
 		body = retrieveZipBody(it, eof);
 		codewords = HuffmanEncoding.retrieveCodewords(header);
@@ -305,12 +305,12 @@ public class Zipper {
 		String rootFolder;
 		String header;
 
-		// init the iterator
+// Init l'itérateur
 		it = new FileCharIterator(target);
-		// retrieve the header from the encoded file and parse it
+// Récupère l'en-tête(la tête) du fichier(dossier) codé et en fait l'analyse syntaxique
 		header = HuffmanEncoding.retrieveEncodedHeader(it);
 		files = retrieveZipHeader(header);
-		// create folders if needed
+// Crée des dossiers si nécessaire
 		rootFolder = getRootFolder(files);
 		
 		if (!rootFolder.isEmpty())
