@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class FileOutputHelper {
 
-    // Length of outputStr must be multiple of 8;
+//La longueur d'outputStr doit être multiple de 8;
     static void writeBinStrToFile(String outputStr, String outputFileName) {
 
         int strLen = outputStr.length();
