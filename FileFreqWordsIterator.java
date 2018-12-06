@@ -41,7 +41,7 @@ public class FileFreqWordsIterator implements Iterator<String> {
 		return frequentWords;
 	}
 	
-	// Loading the Binary Queue. 
+// Chargement de la File d'attente Binaire.
 	private Queue<String> loadBinQueue(String binChar, HashMap<String, Integer> fchar) {
 		Queue<String> bin = new LinkedList<String>();
 		String word = "";
@@ -69,7 +69,7 @@ public class FileFreqWordsIterator implements Iterator<String> {
 	}
 	
 	
-	// Parsing words. 
+// Analyse syntaxique de mots.
 	private Iterator<String> parseWords() {
 		HashMap<String, Integer> fwords = new HashMap<String, Integer>();
 		StringBuilder binChar = new StringBuilder("");
