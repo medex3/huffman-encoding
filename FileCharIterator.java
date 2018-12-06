@@ -28,6 +28,7 @@ public class FileCharIterator implements Iterator<String> {
             System.exit(1);
         }
     }
+    //retour un msg
 
     @Override
     public boolean hasNext() {
