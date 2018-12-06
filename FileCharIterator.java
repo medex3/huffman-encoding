@@ -19,7 +19,9 @@ public class FileCharIterator implements Iterator<String> {
             input = new FileInputStream(inputFileName);
             nextChar = input.read();
             this.inputFileName = inputFileName;
-        } catch (FileNotFoundException e) {
+        } 
+        //afficher les erreu
+        catch (FileNotFoundException e) {
             System.err.printf("No such file: %s\n", inputFileName);
             System.exit(1);
         } catch (IOException e) {
@@ -28,7 +30,7 @@ public class FileCharIterator implements Iterator<String> {
             System.exit(1);
         }
     }
-    //retour un msg
+    
 
     @Override
     public boolean hasNext() {
