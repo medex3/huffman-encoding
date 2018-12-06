@@ -19,13 +19,13 @@ public class HuffmanEncodingTest extends TestCase {
 	}
 	
 	public void testLargeFile() {
-		// encode
+// Code
 		HuffmanEncoding.encode("TheAdventuresOfSherlockHolmes.txt", "TheAdventuresOfSherlockHolmes.txt.huffman", 0);
 		
-		// decode 
+// Décode
 		HuffmanEncoding.decode("TheAdventuresOfSherlockHolmes.txt.huffman", "mybook.txt");
 
-		// check if these two files are the same
+// Vérifie si ces deux fichiers(dossiers) sont les mêmes
 		boolean equals = isSameFile(new FileCharIterator("mybook.txt"), 
 									new FileCharIterator("TheAdventuresOfSherlockHolmes.txt"));
 		assertEquals(true, equals);
@@ -38,7 +38,7 @@ public class HuffmanEncodingTest extends TestCase {
 		// decode
 		HuffmanEncoding.decode("HangInThere.jpg.huffman", "myHangInThere.jpg");
 
-		// check if these two files are the same
+// Vérifie si ces deux fichiers(dossiers) sont les mêmes
 		boolean equals = isSameFile(new FileCharIterator("myHangInThere.jpg"),
 									new FileCharIterator("HangInThere.jpg"));
 		assertEquals(true, equals);
@@ -59,7 +59,7 @@ public class HuffmanEncodingTest extends TestCase {
 		// decode 
 		HuffmanEncoding.decode("empty.txt.huffman", "empty.txt");
 		
-		// check if these two files are the same
+// Vérifie si ces deux fichiers(dossiers) sont les mêmes
 		boolean equals = isSameFile(new FileCharIterator("empty.txt"), new FileCharIterator(f.getAbsolutePath()));
 
 		f.delete();
@@ -75,7 +75,7 @@ public class HuffmanEncodingTest extends TestCase {
 			e.printStackTrace();
 		}
 		
-		// fill in the file with all the ASCII character
+// Se remplit dans le fichier(dossier) de tout le caractère(personnage) d'ASCII
 		for (int i = 0; i < 255; i++) {
 			String section = Integer.toBinaryString(i);
 
@@ -88,7 +88,7 @@ public class HuffmanEncodingTest extends TestCase {
 		// decode 
 		HuffmanEncoding.decode("ASCIIFile.txt.huffman", "ASCIIFile.txt");
 		
-		// check if these two files are the same
+// Vérifie si ces deux fichiers(dossiers) sont les mêmes
 		boolean equals = isSameFile(new FileCharIterator(f.getAbsolutePath()), new FileCharIterator("ASCIIFile.txt"));
 
 		f.delete();
@@ -102,7 +102,7 @@ public class HuffmanEncodingTest extends TestCase {
 		// decode
 		HuffmanEncoding.decode("lastquestion.txt.huffman", "mylastquestion.txt");
 
-		// check if these two files are the same
+// Vérifie si ces deux fichiers(dossiers) sont les mêmes
 		boolean equals = isSameFile(new FileCharIterator("mylastquestion.txt"),
 									new FileCharIterator("lastquestion.txt"));
 		assertEquals(true, equals);
