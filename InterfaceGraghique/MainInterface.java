@@ -42,6 +42,7 @@ public class MainInterface {
                                     if(fs ==JFileChooser.APPROVE_OPTION){
                                         String rs=label.getText();
                                         File file= fileChooser.getSelectedFile();
+                                                file.getPath();
                                         label.setText(rs);
                                         frame.repaint();
                                     }
