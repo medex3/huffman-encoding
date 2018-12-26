@@ -30,7 +30,8 @@ public class MainInterface {
             label =new JLabel();
             panel.setBackground(lightGray);
 
-                button =new JButton();
+final String[] filename = new String[1];       
+        button =new JButton();
                     button.setText("Select");
                         button.addActionListener(new ActionListener() {
                             @Override
@@ -41,6 +42,7 @@ public class MainInterface {
                                       int fs= fileChooser.showSaveDialog(null);
                                     if(fs ==JFileChooser.APPROVE_OPTION){
                                         String rs=label.getText();
+                                         String filename=new String(file.getAbsolutePath());
                                         File file= fileChooser.getSelectedFile();
                                                 file.getPath();
                                         label.setText(rs);
