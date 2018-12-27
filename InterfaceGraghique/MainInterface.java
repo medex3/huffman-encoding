@@ -28,10 +28,9 @@ public class MainInterface {
             panel =new JPanel();
             panel2= new JPanel();
             label =new JLabel();
-            panel.setBackground(lightGray);
-
-final String[] filename = new String[1];       
+            panel.setBackground(lightGray);     
         button =new JButton();
+        final String[] filename = new String[1];  
                     button.setText("Select");
                         button.addActionListener(new ActionListener() {
                             @Override
@@ -42,9 +41,9 @@ final String[] filename = new String[1];
                                       int fs= fileChooser.showSaveDialog(null);
                                     if(fs ==JFileChooser.APPROVE_OPTION){
                                         String rs=label.getText();
-                                         String filename=new String(file.getAbsolutePath());
                                         File file= fileChooser.getSelectedFile();
                                                 file.getPath();
+                                         String filename=new String(file.getAbsolutePath());
                                         label.setText(rs);
                                         frame.repaint();
                                     }
@@ -61,6 +60,17 @@ final String[] filename = new String[1];
                 panel.add(button1);
                 //panel2.add(fileChooser);
                 //frame.add(panel2);
+         button1.addActionListener(new ActionListener() {
+ @Override
+  public void actionPerformed(ActionEvent actionEvent) {
+                                new HuffmanEncoding().encode(filename[0], filename[0] +"huffman",1);
+                                new HuffmanEncoding().decode(filename[0] +".huffman", filename[0]);
+                            }
+                        });
+
+
+
+
                 frame.add(panel,BorderLayout.EAST);
 
 
