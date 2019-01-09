@@ -19,7 +19,7 @@ public class MainInterface {
             gui();
         }
 
-    private void gui() {
+    private void gui()  {
             frame =new JFrame();
             frame.setTitle("HuffmanEncoding");
             frame.setVisible(true);
