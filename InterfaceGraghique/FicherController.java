@@ -8,13 +8,15 @@ public class FicherController extends FileFilter {
         private  final String description;
         private  final String extention2;
         private  final String description2;
+         private  final String extention1;
+        private  final String description1;
 r
-    public FicherController(String extention, String description ,String extention2,String description2) {
+r
+    public FicherController(String extention, String description ,String extention2,String description2,String extention1,String description1) {
         this.extention = extention;
         this.description = description;
-        this.extention2 = extention2;
-        this.description2 = description2;
-        
+         this.extention = extention1;
+        this.description = description1;
 
 
     }
