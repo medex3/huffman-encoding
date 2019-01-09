@@ -28,14 +28,15 @@ public class MainInterface {
             panel =new JPanel();
             panel2= new JPanel();
             label =new JLabel();
-            panel.setBackground(lightGray);     
+            panel.setBackground(lightGray); 
+        fileChooser =new JFileChooser();
         button =new JButton();
         final String[] filename = new String[1];  
                     button.setText("Select");
                         button.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent actionEvent) {
-                                fileChooser =new JFileChooser();
+                               
                                     fileChooser.setDialogTitle("Choisie un ficher");
                                         fileChooser.setFileFilter(new FicherController(".txt","ficher texte"));
                                       int fs= fileChooser.showSaveDialog(null);
