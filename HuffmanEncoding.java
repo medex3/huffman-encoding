@@ -26,7 +26,7 @@ public class HuffmanEncoding  {
 		
 //La méthode qui vérifie si certain treenode est une feuille c'est-à-dire un caractère simple.
 		public boolean isLeaf() {
-			return myLeft == null && myright == null;
+			return myLeft == null && myRight == null;
 		}
 	}
 	
