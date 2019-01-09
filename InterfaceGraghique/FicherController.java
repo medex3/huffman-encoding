@@ -14,7 +14,17 @@ r
         this.description = description;
 
     }
-
+public void playSound() {
+    try {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File().getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+    } catch(Exception ex) {
+        System.out.println("Error with playing sound.");
+        ex.printStackTrace();
+    }
+}
     @Override
     public boolean accept(File file) {
                 if (file.isDirectory()){
