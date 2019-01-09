@@ -12,6 +12,10 @@ r
     public FicherController(String extention, String description ,String extention2,String description2) {
         this.extention = extention;
         this.description = description;
+        this.extention2 = extention2;
+        this.description2 = description2;
+        
+
 
     }
 public void playSound() {
