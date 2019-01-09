@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class HuffmanEncoding {
+public class HuffmanEncoding  {
 	
 	private static class TreeNode {
 		private TreeNode myLeft;
