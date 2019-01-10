@@ -30,6 +30,8 @@ public class MainInterface {
             label =new JLabel();
             panel.setBackground(lightGray); 
         fileChooser =new JFileChooser();
+        JImageComponent ic = new JImageComponent(myImageGoesHere);
+                imagePanel.add(ic);
         button =new JButton();
         final String[] filename = new String[1];  
                     button.setText("Select");
