@@ -31,7 +31,10 @@ should reproduce the original file.
 java Zipper unzipper [target] [destination]
 ```
 
-- Target: The name of the file, folder to be decompressed
+- Target: The name of the file, folder to be decompressed, we add all type of files that can be added by isIMA STUDENTS.
 - Destination: The name of the decompressed file (to be created)
+- Projet : C'est projet est modifier par un groupe des etudiants de Isi Mahdia
+- Changes : Créer un interface graphique avec de methode des accées sur le code de projet
+
 
  
