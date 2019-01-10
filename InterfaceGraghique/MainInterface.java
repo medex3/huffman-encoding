@@ -68,7 +68,7 @@ public class MainInterface {
   public void actionPerformed(ActionEvent actionEvent) {
                                 new HuffmanEncoding().encode(filename[0], filename[0] +"huffman",1);
                                 new HuffmanEncoding().decode(filename[0] +".huffman", filename[0]);
-        JOptionPane.showMessageDialog(frame,"conversion est fait.");
+        JOptionPane.showMessageDialog(frame,"conversion est fait.") ;
       
                             }
                         });
