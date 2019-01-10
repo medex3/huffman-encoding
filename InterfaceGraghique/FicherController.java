@@ -15,6 +15,10 @@ r
     public FicherController(String extention, String description ,String extention2,String description2,String extention1,String description1) {
         this.extention = extention;
         this.description = description;
+        this.extention = extention2;
+        this.description = description2;
+
+
          this.extention = extention1;
         this.description = description1;
 
@@ -30,6 +34,15 @@ public void playSound() {
         System.out.println("Error with playing sound.");
         ex.printStackTrace();
     }
+   public void image(){              
+ ImageInputStream iis = ImageIO.createImageInputStream(file);
+
+Iterator<ImageReader> imageReaders = ImageIO.getImageReaders(iis);
+
+while (imageReaders.hasNext()) {
+    ImageReader reader = (ImageReader) imageReaders.next();
+    System.out.printf("formatName: %s%n", reader.getFormatName());}
+}       
 }
     @Override
     public boolean accept(File file) {
