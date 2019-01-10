@@ -35,9 +35,9 @@ public void playSound() {
         ex.printStackTrace();
     }
    public void image(){              
- ImageInputStream iis = ImageIO.createImageInputStream(file);
+ ImageInputStream Image = ImageIO.createImageInputStream(file);
 
-Iterator<ImageReader> imageReaders = ImageIO.getImageReaders(iis);
+Iterator<ImageReader> imageReaders = ImageIO.getImageReaders(Image);
 
 while (imageReaders.hasNext()) {
     ImageReader reader = (ImageReader) imageReaders.next();
